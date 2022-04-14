@@ -4,6 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './users.model';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthService } from 'src/auth/auth.service';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UsersService {
@@ -24,10 +25,10 @@ export class UsersService {
     }
 
     async update(dto: UpdateUserDto) {
-        // const hashPassword = await this.authService.createHashPassword(dto.password);
-        // await this.userRepository.update({...dto, password: hashPassword}, {where: {id: dto.id}});
-        // const user = await this.userRepository.findOne({where: {id: dto.id}});
-        // return user;
+        const hashPassword = await bcrypt.hash(dto.password, 5);
+        await this.userRepository.update({...dto, password: hashPassword}, {where: {id: dto.id}});
+        const user = await this.userRepository.findOne({where: {id: dto.id}});
+        return user;
     }
 
     async delete(id: number) {

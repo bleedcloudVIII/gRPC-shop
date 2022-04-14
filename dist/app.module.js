@@ -18,6 +18,8 @@ const users_model_1 = require("./users/users.model");
 const products_model_1 = require("./products/products.model");
 const orders_model_1 = require("./orders/orders.model");
 const orders_items_model_1 = require("./orders-items/orders-items.model");
+const category_module_1 = require("./category/category.module");
+const category_model_1 = require("./category/category.model");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -35,9 +37,10 @@ AppModule = __decorate([
                 username: 'bleedcloud',
                 password: '01RFHfcm11@',
                 database: 'shop',
-                models: [users_model_1.User, products_model_1.Product, orders_model_1.Order, orders_items_model_1.OrderItem],
+                models: [users_model_1.User, products_model_1.Product, orders_model_1.Order, orders_items_model_1.OrderItem, category_model_1.Category],
                 autoLoadModels: true
             }),
+            category_module_1.CategoryModule,
         ],
         controllers: [],
         providers: [],

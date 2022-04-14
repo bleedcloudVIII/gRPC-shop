@@ -16,6 +16,7 @@ exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
 const users_model_1 = require("./users.model");
+const bcrypt = require("bcryptjs");
 let UsersService = class UsersService {
     constructor(userRepository) {
         this.userRepository = userRepository;
@@ -30,6 +31,10 @@ let UsersService = class UsersService {
         return this.userRepository.create(dto);
     }
     async update(dto) {
+        const hashPassword = await bcrypt.hash(dto.password, 5);
+        await this.userRepository.update(Object.assign(Object.assign({}, dto), { password: hashPassword }), { where: { id: dto.id } });
+        const user = await this.userRepository.findOne({ where: { id: dto.id } });
+        return user;
     }
     async delete(id) {
         await this.userRepository.destroy({ where: { id } });

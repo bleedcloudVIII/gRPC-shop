@@ -10,6 +10,7 @@ import { Product } from './products/products.model';
 import { Order } from './orders/orders.model';
 import { OrderItem } from './orders-items/orders-items.model';
 import { CategoryModule } from './category/category.module';
+import { Category } from './category/category.model';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { CategoryModule } from './category/category.module';
       username: 'bleedcloud',
       password: '01RFHfcm11@',
       database: 'shop',
-      models: [User, Product, Order, OrderItem],
+      models: [User, Product, Order, OrderItem, Category],
       autoLoadModels: true
     }),
     CategoryModule,

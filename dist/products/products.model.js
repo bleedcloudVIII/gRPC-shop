@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const category_model_1 = require("../category/category.model");
 let Product = class Product extends sequelize_typescript_1.Model {
 };
 __decorate([
@@ -25,6 +26,10 @@ __decorate([
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.INTEGER, allowNull: false }),
     __metadata("design:type", Number)
 ], Product.prototype, "cost", void 0);
+__decorate([
+    (0, sequelize_typescript_1.HasMany)(() => category_model_1.Category),
+    __metadata("design:type", category_model_1.Category)
+], Product.prototype, "category", void 0);
 Product = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: 'products' })
 ], Product);

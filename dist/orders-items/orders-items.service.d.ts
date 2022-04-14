@@ -4,9 +4,9 @@ import { CreateOrderItemDto } from './dto/create-orderItem.dto';
 import { UpdateOrderItamDto } from './dto/update-orderItem.dto';
 import { OrderItem } from './orders-items.model';
 export declare class OrdersItemsService {
-    private readonly ordersItemsService;
+    private readonly ordersItemsRepository;
     private readonly ordersService;
-    constructor(ordersItemsService: typeof OrderItem, ordersService: OrdersService);
+    constructor(ordersItemsRepository: typeof OrderItem, ordersService: OrdersService);
     create(dto: CreateOrderItemDto): Promise<OrderItem>;
     findOneByOrderItemId(orderItem_id: number): Promise<OrderItem>;
     findAllByOrderId(order_id: number): Promise<OrderItem[]>;
