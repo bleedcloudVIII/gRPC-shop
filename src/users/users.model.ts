@@ -1,4 +1,4 @@
-import { Table, Model, Column, DataType, BelongsTo } from 'sequelize-typescript'
+import { Table, Model, Column, DataType } from 'sequelize-typescript'
 import { Order } from 'src/orders/orders.model';
 
 interface CreateUserAtts {
@@ -16,7 +16,4 @@ export class User extends Model<User, CreateUserAtts> {
 
     @Column({type: DataType.STRING, allowNull: true})
     password: string;
-
-    // @BelongsTo(()=>Order, 'fk_order_user_id')
-    // user: User
 }

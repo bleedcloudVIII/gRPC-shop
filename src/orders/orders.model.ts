@@ -1,4 +1,4 @@
-import { Table, Model, Column, DataType, BelongsTo, HasMany } from 'sequelize-typescript'
+import { Table, Model, Column, DataType } from 'sequelize-typescript'
 import { OrderItem } from 'src/orders-items/orders-items.model';
 import { User } from 'src/users/users.model';
 
@@ -16,13 +16,5 @@ export class Order extends Model<Order, CreateOrderAtts> {
     user_id: number;
 
     @Column({type: DataType.INTEGER})
-    price: number;
-
-    @BelongsTo(() => User, 'fk_order_user_id')
-    user: User
-
-    @HasMany(() => OrderItem)
-    orderItem: OrderItem
-
-    
+    price: number;    
 }
